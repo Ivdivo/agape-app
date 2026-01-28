@@ -21,43 +21,30 @@ const THUMBNAILS = {
 // --- Subcomponents ---
 
 const ContentCard = ({ type, title, subtitle, duration, image, live }: any) => {
-    // Safety check for image source
     const imageSource = typeof image === 'string' ? { uri: image } : image;
-
     return (
-        <TouchableOpacity className="w-full md:w-[48%] lg:w-[32%] mb-10 group">
-            {/* Card Image Container */}
-            <View className="aspect-video rounded-[24px] overflow-hidden bg-gray-100 relative mb-4 shadow-sm border border-gray-100">
+        <TouchableOpacity activeOpacity={0.9} className="w-full md:w-[48%] lg:w-[32%] mb-12 group">
+            <View className="aspect-video rounded-[32px] overflow-hidden bg-gray-100 relative mb-6 shadow-2xl shadow-black/[0.03] border border-gray-50">
                 <Image
                     source={imageSource}
                     className="w-full h-full transition-transform duration-700 group-hover:scale-105"
                     resizeMode="cover"
                 />
-
-                {/* Live Tag */}
                 {live && (
-                    <View className="absolute top-4 left-4 bg-[#EB0046] px-3 py-1.5 rounded-full flex-row items-center shadow-md">
-                        <View className="w-1.5 h-1.5 rounded-full bg-white mr-2 animate-pulse" />
-                        <Text className="text-[9px] text-white font-roboto-bold uppercase tracking-widest leading-none">Live</Text>
+                    <View className="absolute top-4 left-4 bg-[#EB0046] px-4 py-1.5 rounded-full flex-row items-center shadow-lg">
+                        <View className="w-1.5 h-1.5 rounded-full bg-white mr-2.5 animate-pulse" />
+                        <Text className="text-[9px] text-white font-roboto-bold uppercase tracking-[2px]">Live</Text>
                     </View>
                 )}
-
-                {/* Play Button Overlay */}
-                <View className="absolute inset-0 items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/10">
-                    <View className="w-12 h-12 rounded-full bg-white/30 backdrop-blur-md items-center justify-center border border-white/50">
-                        <Play size={20} color="white" fill="white" />
-                    </View>
-                </View>
+                <View className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors" />
             </View>
-
-            {/* Meta Info */}
-            <View className="px-1">
-                <View className="flex-row items-center justify-between mb-2">
-                    <Text className="text-[9px] font-roboto-bold text-[#EB0046] uppercase tracking-[2px]">{type}</Text>
-                    <Text className="text-[9px] font-roboto-medium text-gray-400 uppercase tracking-widest">{duration}</Text>
+            <View className="px-2">
+                <View className="flex-row items-center justify-between mb-3">
+                    <Text className="text-[10px] font-roboto-bold text-[#EB0046] uppercase tracking-[3px]">{type}</Text>
+                    <Text className="text-[10px] font-roboto-medium text-gray-400 uppercase tracking-[2px]">{duration}</Text>
                 </View>
-                <Text className="text-lg font-roboto-bold text-black leading-tight mb-1 group-hover:text-[#EB0046] transition-colors">{title}</Text>
-                <Text className="text-[10px] font-roboto-medium text-gray-500 uppercase tracking-widest">{subtitle}</Text>
+                <Text className="text-xl font-roboto-black text-black leading-tight mb-2 tracking-tight uppercase group-hover:text-[#EB0046] transition-colors">{title}</Text>
+                <Text className="text-[10px] font-roboto-medium text-gray-500 uppercase tracking-[3px]">{subtitle}</Text>
             </View>
         </TouchableOpacity>
     );
@@ -66,33 +53,29 @@ const ContentCard = ({ type, title, subtitle, duration, image, live }: any) => {
 const AnnouncementCard = ({ title, date, image }: any) => {
     const imageSource = typeof image === 'string' ? { uri: image } : image;
     return (
-        <View className="w-full bg-white rounded-[40px] border border-gray-100 p-8 flex-row flex-wrap lg:flex-nowrap items-center justify-between mb-16 shadow-xl shadow-gray-100/40">
-            <View className="flex-row items-center flex-1 mb-6 lg:mb-0 min-w-[300px]">
-                <View className="w-24 h-24 rounded-2xl overflow-hidden mr-6 shadow-md bg-gray-200">
-                    <Image
-                        source={imageSource}
-                        className="w-full h-full"
-                        resizeMode="cover"
-                    />
+        <View className="w-full bg-[#fafafa] rounded-[48px] p-10 flex-row flex-wrap lg:flex-nowrap items-center justify-between mb-20">
+            <View className="flex-row items-center flex-1 mb-8 lg:mb-0 min-w-[300px]">
+                <View className="w-32 h-32 rounded-3xl overflow-hidden mr-8 shadow-xl shadow-black/5 bg-gray-200">
+                    <Image source={imageSource} className="w-full h-full" resizeMode="cover" />
                 </View>
-                <View className="flex-1 pr-4">
-                    <View className="flex-row items-center mb-2">
-                        <View className="w-1.5 h-1.5 rounded-full bg-[#EB0046] mr-2" />
-                        <Text className="text-[9px] font-roboto-bold text-[#EB0046] uppercase tracking-[3px]">Next Live Session</Text>
+                <View className="flex-1 pr-6">
+                    <View className="flex-row items-center mb-3">
+                        <View className="w-2 h-2 rounded-full bg-[#EB0046] mr-2.5 shadow-sm shadow-[#EB0046]/40" />
+                        <Text className="text-[10px] font-roboto-bold text-[#EB0046] uppercase tracking-[4px]">Featured Stream</Text>
                     </View>
-                    <Text className="text-2xl font-roboto-black text-black uppercase tracking-tight leading-none mb-2">{title}</Text>
+                    <Text className="text-3xl font-roboto-black text-black uppercase tracking-tighter leading-[0.9] mb-4">{title}</Text>
                     <View className="flex-row items-center">
-                        <Calendar size={14} color="#9ca3af" className="mr-2" />
-                        <Text className="text-[11px] font-roboto-medium text-gray-400 uppercase tracking-[2px]">{date}</Text>
+                        <Calendar size={16} color="#9ca3af" className="mr-2" />
+                        <Text className="text-[11px] font-roboto-medium text-gray-500 uppercase tracking-[3px]">{date}</Text>
                     </View>
                 </View>
             </View>
             <TouchableOpacity
-                className="bg-black px-8 py-4 rounded-xl flex-row items-center hover:bg-gray-800 transition-colors"
-                onPress={() => Alert.alert("Calendar", "Event added to your calendar.")}
+                className="bg-black px-12 py-5 rounded-2xl flex-row items-center shadow-2xl active:scale-95 transition-all"
+                onPress={() => Alert.alert("Sanctuary", "Reminded set successfully.")}
             >
-                <Text className="text-white font-roboto-bold text-[10px] uppercase tracking-[3px] mr-2">Notify Me</Text>
-                <ArrowRight size={14} color="white" />
+                <Text className="text-white font-roboto-bold text-[11px] uppercase tracking-[4px] mr-3">Set Reminder</Text>
+                <ArrowRight size={16} color="white" />
             </TouchableOpacity>
         </View>
     );
@@ -127,19 +110,17 @@ export const MasterProfileScreen = ({ navigation }: any) => {
                     Desktop (lg): Height constrained to 90vh (not full screen, to allow hint of scroll).
                     Image: Object position customized for web.
                 */}
-                <View className="bg-white flex-row flex-wrap lg:flex-nowrap border-b border-gray-50 lg:min-h-[800px] lg:h-[90vh]">
+                <View className="bg-white flex-row flex-wrap lg:flex-nowrap border-b border-gray-50 lg:min-h-[800px]">
 
-                    {/* Left Column: Image */}
-                    <View className="w-full lg:w-[45%] h-[50vh] lg:h-full bg-gray-100 overflow-hidden relative">
+                    <View className="w-full h-[450px] lg:h-full lg:w-[45%] bg-white overflow-hidden relative border-b lg:border-b-0 lg:border-r border-gray-50">
                         <Image
                             source={master.image}
                             className="w-full h-full"
                             style={Platform.select({
-                                web: { objectFit: 'contain', objectPosition: 'center center' } as any
+                                web: { objectFit: 'cover', objectPosition: 'center 15%' } as any
                             })}
-                            resizeMode="contain"
+                            resizeMode="cover"
                         />
-                        {/* Gradient not needed if image is good, but adding subtle overlay helps text pop if we overlay it. Here we don't. */}
                     </View>
 
                     {/* Right Column: Info */}
@@ -155,11 +136,11 @@ export const MasterProfileScreen = ({ navigation }: any) => {
 
                             <Text className="text-[10px] font-roboto-bold text-[#EB0046] uppercase tracking-[6px] mb-6">Master Profile</Text>
 
-                            <Text className="text-5xl md:text-7xl lg:text-8xl font-roboto-black text-black uppercase tracking-tighter leading-[0.9] mb-8">
+                            <Text className="text-3xl md:text-7xl lg:text-8xl font-roboto-black text-black uppercase tracking-tighter leading-[0.9] mb-8">
                                 {master.name}
                             </Text>
 
-                            <View className="flex-row items-center mb-10 gap-8">
+                            <View className="flex-row items-center mb-10 gap-x-6 sm:gap-x-8 gap-y-4 flex-wrap">
                                 <View className="flex-row items-center">
                                     <View className="w-8 h-8 rounded-full bg-[#EB0046] items-center justify-center mr-3">
                                         <Users size={14} color="white" />
@@ -212,12 +193,16 @@ export const MasterProfileScreen = ({ navigation }: any) => {
                         <View className="mb-20">
                             <Text className="text-[10px] font-roboto-bold text-[#EB0046] uppercase tracking-[6px] mb-4">The Archive</Text>
                             <View className="flex-row flex-wrap justify-between items-end border-b border-gray-100 pb-8">
-                                <Text className="text-4xl md:text-5xl font-roboto-black text-black uppercase tracking-tight leading-none mb-6 lg:mb-0">
+                                <Text className="text-3xl md:text-5xl font-roboto-black text-black uppercase tracking-tight leading-none mb-6 lg:mb-0">
                                     Teachings & Sessions
                                 </Text>
 
-                                {/* Tabs */}
-                                <View className="flex-row flex-wrap gap-8">
+                                <ScrollView
+                                    horizontal
+                                    showsHorizontalScrollIndicator={false}
+                                    className="flex-row"
+                                    contentContainerStyle={{ gap: 32 }}
+                                >
                                     {tabs.map(tab => (
                                         <TouchableOpacity
                                             key={tab}
@@ -230,7 +215,7 @@ export const MasterProfileScreen = ({ navigation }: any) => {
                                             {activeTab === tab && <View className="absolute bottom-0 left-0 right-0 h-0.5 bg-black" />}
                                         </TouchableOpacity>
                                     ))}
-                                </View>
+                                </ScrollView>
                             </View>
                         </View>
 
@@ -250,7 +235,7 @@ export const MasterProfileScreen = ({ navigation }: any) => {
 
                             {/* Grid */}
                             <Text className="text-[10px] font-roboto-bold text-gray-400 uppercase tracking-widest mb-8 ml-2">Latest Documentation</Text>
-                            <View className="flex-row flex-wrap justify-between">
+                            <View className="flex-row flex-wrap justify-center md:justify-start gap-x-[2%]">
                                 <ContentCard
                                     live={false}
                                     type="Recorded Stream"

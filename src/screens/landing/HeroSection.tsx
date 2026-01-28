@@ -8,16 +8,16 @@ const IntentionItem = ({ label }: { label: string }) => {
         <TouchableOpacity
             onPress={() => setChecked(!checked)}
             activeOpacity={0.7}
-            className={`flex-row items-center p-3 mb-2 rounded-xl border transition-all duration-300 ${checked
-                ? 'bg-[#EB0046]/5 border-[#EB0046] shadow-sm'
-                : 'bg-gray-50/50 border-gray-100'
+            className={`flex-row items-center py-3.5 px-6 rounded-full border transition-all duration-300 ${checked
+                ? 'bg-[#EB0046]/5 border-[#EB0046]/30'
+                : 'bg-white border-gray-100 shadow-sm'
                 }`}
         >
-            <View className={`w-5 h-5 rounded-full items-center justify-center border ${checked ? 'bg-[#EB0046] border-[#EB0046]' : 'bg-white border-gray-200'
+            <View className={`w-5 h-5 rounded-full items-center justify-center border-[1.5px] ${checked ? 'bg-[#EB0046] border-[#EB0046]' : 'bg-transparent border-gray-300'
                 }`}>
-                {checked && <Check size={12} color="white" strokeWidth={4} />}
+                {checked && <Check size={10} color="white" strokeWidth={4} />}
             </View>
-            <Text className={`ml-3 text-sm font-roboto-medium tracking-tight ${checked ? 'text-black' : 'text-gray-600'
+            <Text className={`ml-3 text-[13px] md:text-[15px] font-roboto-medium tracking-wide ${checked ? 'text-black' : 'text-gray-500'
                 }`}>
                 {label}
             </Text>
@@ -34,76 +34,93 @@ export const HeroSection = ({ onStartPractice }: { onStartPractice?: () => void 
     ];
 
     return (
-        <View className="bg-white px-6 py-12 lg:py-16">
+        <View className="bg-[#FCFCFC] px-6 pt-16 pb-20 lg:py-24 relative overflow-hidden">
+            {/* Subtle Aura Background Element */}
+            <View
+                pointerEvents="none"
+                className="absolute -top-[20%] left-[-10%] w-[120%] h-[600px] bg-[#EB0046]/[0.03] rounded-full blur-[100px]"
+            />
+
             <View className="max-w-[1440px] mx-auto">
-                <View className="flex-col lg:flex-row items-center lg:items-start" style={{ gap: 48 }}>
-                    {/* Left Content */}
-                    <View className="w-full lg:w-[52%] flex-col justify-center">
-                        <View className="mb-6">
-                            <Text className="text-[10px] md:text-xs font-roboto-bold text-[#EB0046] uppercase tracking-[6px] mb-4">
+                <View className="flex-col lg:flex-row items-center lg:items-start gap-16 lg:gap-20">
+                    {/* Main Content Area */}
+                    <View className="w-full lg:w-[55%] flex-col items-center lg:items-start z-10">
+
+                        {/* Eyebrow */}
+                        <View className="mb-8 lg:mb-10 items-center lg:items-start">
+                            <View className="flex-row items-center gap-2 mb-3 lg:hidden">
+                                <View className="w-1 h-1 rounded-full bg-[#EB0046]" />
+                                <View className="w-1 h-1 rounded-full bg-[#EB0046] opacity-50" />
+                                <View className="w-1 h-1 rounded-full bg-[#EB0046] opacity-25" />
+                            </View>
+                            <Text className="text-[11px] md:text-xs font-roboto-bold text-[#EB0046] uppercase tracking-[6px] text-center lg:text-left">
                                 The Agape Sanctuary
-                            </Text>
-                            {/* Adjusted text size for better responsiveness */}
-                            <Text className="text-[42px] sm:text-[56px] lg:text-[72px] font-roboto-black tracking-tighter text-black leading-[0.95] uppercase">
-                                Love is the{"\n"}force that{"\n"}
-                                <Text className="text-[#EB0046]">unites.</Text>
                             </Text>
                         </View>
 
-                        <Text className="text-base md:text-lg text-gray-500 font-roboto-regular leading-relaxed mb-8 pr-8">
+                        {/* Headline */}
+                        <View className="mb-8 lg:mb-12 relative">
+                            <Text className="text-[52px] sm:text-[64px] lg:text-[80px] xl:text-[92px] font-roboto-black tracking-tighter text-black leading-[0.9] uppercase text-center lg:text-left">
+                                Love is the{"\n"}force that{"\n"}
+                                <Text className="text-[#EB0046]">unites.</Text>
+                            </Text>
+                            {/* Decorative underline for mobile emphasis */}
+                            <View className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-24 h-1 bg-gray-100/50 rounded-full lg:hidden" />
+                        </View>
+
+                        {/* Description */}
+                        <Text className="text-[15px] sm:text-lg text-gray-500 font-roboto-medium leading-[1.6] mb-12 text-center lg:text-left max-w-lg lg:max-w-xl">
                             A 24/7 live sanctuary. Shape your inner state and refine your focus through guided presence and ancient wisdom.
                         </Text>
 
-                        <View className="mb-10 w-full">
-                            <Text className="text-[10px] font-roboto-bold text-gray-400 uppercase tracking-[4px] mb-4">Choose your intention</Text>
-                            <View>
+                        {/* Interactive Intention Selector */}
+                        <View className="mb-12 w-full max-w-md lg:max-w-full">
+                            <Text className="text-[10px] font-roboto-bold text-gray-400 uppercase tracking-[4px] mb-6 text-center lg:text-left">Choose your intention</Text>
+                            <View className="gap-3">
                                 <IntentionItem label="Build calm focus and clarity" />
-                                <IntentionItem label="Morning alignment and intention" />
+                                <IntentionItem label="Morning alignment & intention" />
                                 <IntentionItem label="Deep spiritual immersion" />
                             </View>
                         </View>
 
-                        <View className="flex-row items-center space-x-4">
+                        {/* CTA Buttons */}
+                        <View className="flex-col w-full sm:w-auto sm:flex-row items-center gap-4 lg:gap-6">
                             <TouchableOpacity
                                 onPress={onStartPractice}
-                                className="bg-black px-8 py-4 rounded-xl shadow-lg flex-row items-center hover:bg-gray-900 transition-colors"
+                                activeOpacity={0.9}
+                                className="w-full sm:w-auto bg-[#EB0046] px-10 py-5 lg:py-6 rounded-full lg:rounded-2xl shadow-xl shadow-[#EB0046]/25 flex-row items-center justify-center active:scale-[0.98] transition-all"
                             >
-                                <Text className="text-white font-roboto-bold text-[11px] uppercase tracking-widest mr-3">Start Practice</Text>
-                                <ArrowRight size={16} color="white" />
+                                <Text className="text-white font-roboto-black text-[13px] uppercase tracking-[3px] mr-3">Start Practice</Text>
+                                <ArrowRight size={20} color="white" strokeWidth={2.5} />
                             </TouchableOpacity>
-                            <TouchableOpacity className="px-6 py-4">
-                                <Text className="text-black font-roboto-bold text-[11px] uppercase tracking-widest border-b border-gray-300 pb-1">View Schedule</Text>
+
+                            <TouchableOpacity className="py-4 items-center justify-center mt-2 sm:mt-0">
+                                <Text className="text-black font-roboto-bold text-[11px] uppercase tracking-[3px] border-b border-transparent hover:border-black transition-colors">View Schedule</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
 
-                    {/* Right Visuals - Sophisticated Grid */}
-                    <View className="w-full lg:w-[48%] relative" style={{ minHeight: 600 }}>
-                        <View style={{ flexDirection: 'row', height: 600, gap: 16 }}>
-                            {/* Left Column */}
-                            <View style={{ flex: 1, gap: 16, paddingTop: 32 }}>
-                                <View style={{ height: 360, borderRadius: 32, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 8 }}>
-                                    <Image source={{ uri: collageImages[0] }} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
+                    {/* Desktop Visuals - Hidden on Mobile to focus on Typography */}
+                    <View className="hidden lg:block w-full lg:w-[45%] h-[700px] relative">
+                        <View className="absolute top-0 right-0 w-[90%] h-[90%] bg-gray-50 rounded-[60px] -rotate-3" />
+                        <View className="flex-row h-full gap-5 relative z-10 p-4">
+                            <View className="flex-1 gap-5 pt-12">
+                                <View className="h-[55%] rounded-[40px] overflow-hidden shadow-2xl shadow-black/5">
+                                    <Image source={{ uri: collageImages[0] }} className="w-full h-full" resizeMode="cover" />
                                 </View>
-                                <View style={{ height: 200, borderRadius: 32, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 8 }}>
-                                    <Image source={{ uri: collageImages[1] }} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
+                                <View className="h-[35%] rounded-[40px] overflow-hidden shadow-2xl shadow-black/5">
+                                    <Image source={{ uri: collageImages[1] }} className="w-full h-full" resizeMode="cover" />
                                 </View>
                             </View>
-
-                            {/* Right Column */}
-                            <View style={{ flex: 1, gap: 16 }}>
-                                <View style={{ height: 200, borderRadius: 32, overflow: 'hidden', backgroundColor: '#f5f5f5', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 8 }}>
-                                    <Image source={{ uri: collageImages[2] }} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
+                            <View className="flex-1 gap-5">
+                                <View className="h-[35%] rounded-[40px] overflow-hidden shadow-2xl shadow-black/5">
+                                    <Image source={{ uri: collageImages[2] }} className="w-full h-full" resizeMode="cover" />
                                 </View>
-                                <View style={{ height: 360, borderRadius: 32, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 8 }}>
-                                    <Image source={{ uri: collageImages[3] }} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
+                                <View className="h-[55%] rounded-[40px] overflow-hidden shadow-2xl shadow-black/5">
+                                    <Image source={{ uri: collageImages[3] }} className="w-full h-full" resizeMode="cover" />
                                 </View>
                             </View>
                         </View>
-
-                        {/* Decorative background element */}
-                        <View style={{ position: 'absolute', right: -40, top: 80, width: 320, height: 320, backgroundColor: 'rgba(235, 0, 70, 0.1)', borderRadius: 160, zIndex: -1 }} />
-                        <View style={{ position: 'absolute', left: -40, bottom: 0, width: 240, height: 240, backgroundColor: 'rgba(219, 234, 254, 0.2)', borderRadius: 120, zIndex: -1 }} />
                     </View>
                 </View>
             </View>
