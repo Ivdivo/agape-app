@@ -135,9 +135,9 @@ export const MasterProfileScreen = ({ navigation }: any) => {
                             source={master.image}
                             className="w-full h-full"
                             style={Platform.select({
-                                web: { objectFit: 'cover', objectPosition: 'center 20%' } as any
+                                web: { objectFit: 'contain', objectPosition: 'center center' } as any
                             })}
-                            resizeMode="cover"
+                            resizeMode="contain"
                         />
                         {/* Gradient not needed if image is good, but adding subtle overlay helps text pop if we overlay it. Here we don't. */}
                     </View>

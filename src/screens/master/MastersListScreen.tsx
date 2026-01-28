@@ -49,7 +49,7 @@ const MASTERS_DATA = [
         id: '5',
         name: 'Marcus Thorne',
         role: 'Breathwork',
-        image: { uri: 'https://images.unsplash.com/photo-1512438248548-3b53e843117b?q=80&w=800&auto=format&fit=crop' },
+        image: require('../../../assets/masters/marcus.png'),
         bio: 'Mastering the art of conscious breathing to unlock physical and emotional breakthroughs.',
         students: '54K',
         tags: ['Breath', 'Body']
@@ -58,7 +58,7 @@ const MASTERS_DATA = [
         id: '6',
         name: 'Aisha Rahman',
         role: 'Sufi Meditation',
-        image: { uri: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop' },
+        image: require('../../../assets/masters/aisha.png'),
         bio: 'Exploring the path of the heart through rhythm, movement, and Sufi wisdom traditions.',
         students: '31K',
         tags: ['Heart', 'Sufi']
@@ -67,7 +67,7 @@ const MASTERS_DATA = [
         id: '7',
         name: 'Kenji Watanabe',
         role: 'Mindful Movement',
-        image: { uri: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=800&auto=format&fit=crop' },
+        image: require('../../../assets/masters/kenji.png'),
         bio: 'Integrating movement and stillness to cultivate a state of flow in every action.',
         students: '67K',
         tags: ['Movement', 'Flow']
@@ -76,7 +76,7 @@ const MASTERS_DATA = [
         id: '8',
         name: 'Maria Santos',
         role: 'Emotional Intelligence',
-        image: { uri: 'https://images.unsplash.com/photo-1499209974431-9dac3dc5c27d?q=80&w=800&auto=format&fit=crop' },
+        image: require('../../../assets/masters/maria.png'),
         bio: 'Expert guidance on navigating the complex landscape of human emotions with grace.',
         students: '42K',
         tags: ['EQ', 'Relationships']
@@ -85,7 +85,7 @@ const MASTERS_DATA = [
         id: '9',
         name: 'Kaito Tanaka',
         role: 'Sound Healing',
-        image: { uri: 'https://images.unsplash.com/photo-1545209118-0e8adca010b4?q=80&w=800&auto=format&fit=crop' },
+        image: require('../../../assets/masters/kaito.png'),
         bio: 'Using vibrational frequency and soundscapes to restore harmonic balance to the nervous system.',
         students: '38K',
         tags: ['Sound', 'Restoration']
@@ -105,7 +105,7 @@ const MasterCard = ({ master, onPress }: any) => {
                 <Image
                     source={imageSource}
                     className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
-                    resizeMode="cover"
+                    resizeMode="contain"
                 />
                 <View className="absolute bottom-6 right-6 w-12 h-12 rounded-full bg-white/95 backdrop-blur-xl items-center justify-center shadow-lg transform transition-transform group-hover:scale-110">
                     <ArrowRight size={18} color="black" />
@@ -127,7 +127,7 @@ export const MastersListScreen = ({ onMasterPress, onBack }: { onMasterPress: (m
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedTag, setSelectedTag] = useState('All');
 
-    const tags = ['All', 'Zen', 'Meditation', 'Nature', 'Science', 'Breath', 'Movement'];
+    const tags = ['ALL', 'LifeStream Archive', 'Upcoming Live Streams', 'Videos'];
 
     const featuredMaster = MASTERS_DATA[0];
     const otherMasters = MASTERS_DATA.slice(1);
@@ -152,7 +152,7 @@ export const MastersListScreen = ({ onMasterPress, onBack }: { onMasterPress: (m
                             <Image
                                 source={featuredMaster.image}
                                 className="w-full h-full"
-                                resizeMode="cover"
+                                resizeMode="contain"
                             />
                             {/* Decorative overlay for better text contrast if we had overlay text, but we don't. Kept clean. */}
                         </View>
