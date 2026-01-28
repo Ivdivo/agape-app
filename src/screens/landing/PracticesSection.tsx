@@ -1,33 +1,41 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 
-const PracticeCard = ({ title, category, image }: any) => (
-    <TouchableOpacity
-        activeOpacity={0.8}
-        className="w-full md:w-[48%] lg:w-[23%] aspect-[3/4] rounded-[32px] overflow-hidden relative mb-6 lg:mb-0 shadow-sm hover:shadow-xl transition-all duration-300"
-    >
-        <Image
-            source={{ uri: image }}
-            className="w-full h-full absolute"
-            resizeMode="cover"
-        />
-        <View className="absolute inset-0 bg-black/20" />
-        <View className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        <View className="absolute bottom-8 left-8 right-8">
-            <Text className="text-white/90 font-roboto-bold text-[11px] uppercase tracking-[3px] mb-3">{category}</Text>
-            <Text className="text-white font-roboto-black text-3xl uppercase leading-none shadow-sm">{title}</Text>
-        </View>
-    </TouchableOpacity>
-);
+const { width: screenWidth } = Dimensions.get('window');
+
+const PracticeCard = ({ title, category, image }: any) => {
+    return (
+        <TouchableOpacity
+            activeOpacity={0.8}
+            style={[
+                styles.card,
+                screenWidth > 1024 ? styles.cardDesktop : screenWidth > 768 ? styles.cardTablet : styles.cardMobile
+            ]}
+        >
+            <Image
+                source={{ uri: image }}
+                style={styles.cardImage}
+                resizeMode="cover"
+            />
+            <View style={styles.overlay} />
+            <View style={styles.gradient} />
+            <View style={styles.textContainer}>
+                <Text style={styles.category}>{category.toUpperCase()}</Text>
+                <Text style={styles.title}>{title.toUpperCase()}</Text>
+            </View>
+        </TouchableOpacity>
+    );
+};
 
 export const PracticesSection = () => {
     return (
-        <View className="py-24 bg-white">
+        <View className="py-16 bg-white">
             <View className="max-w-[1440px] mx-auto px-6">
-                <Text className="text-[10px] md:text-xs font-roboto-bold text-[#EB0046] uppercase tracking-[6px] mb-12 text-center">Disciplines</Text>
+                <Text className="text-[10px] font-roboto-bold text-[#EB0046] uppercase tracking-[6px] mb-10 text-center">
+                    Disciplines
+                </Text>
 
-                {/* Grid Layout using Flex and Gap */}
-                <View className="flex-row flex-wrap justify-between lg:justify-start lg:gap-[2.66%]">
+                <View style={styles.grid}>
                     <PracticeCard
                         title="Vipassana"
                         category="Insight"
@@ -53,3 +61,77 @@ export const PracticesSection = () => {
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    grid: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: screenWidth > 1024 ? 'flex-start' : 'space-between',
+        gap: screenWidth > 1024 ? 20 : 0,
+    },
+    card: {
+        borderRadius: 32,
+        overflow: 'hidden',
+        position: 'relative',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 8,
+        elevation: 5,
+    },
+    cardMobile: {
+        width: '100%',
+        height: 400,
+        marginBottom: 24,
+    },
+    cardTablet: {
+        width: '48%',
+        height: 320,
+        marginBottom: 24,
+    },
+    cardDesktop: {
+        width: 280,
+        height: 373,
+        marginBottom: 0,
+    },
+    cardImage: {
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+    },
+    overlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    },
+    gradient: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.4)',
+    },
+    textContainer: {
+        position: 'absolute',
+        bottom: 24,
+        left: 24,
+        right: 24,
+    },
+    category: {
+        color: 'rgba(255, 255, 255, 0.9)',
+        fontFamily: 'Roboto_700Bold',
+        fontSize: 10,
+        letterSpacing: 3,
+        marginBottom: 8,
+    },
+    title: {
+        color: '#FFFFFF',
+        fontFamily: 'Roboto_900Black',
+        fontSize: 24,
+        lineHeight: 28,
+    },
+});

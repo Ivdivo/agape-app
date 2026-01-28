@@ -10,8 +10,10 @@ import { PracticesSection } from './PracticesSection';
 import { MastersSection } from './MastersSection';
 import { Footer } from '../../components/Footer';
 import { GlobalBackground } from '../../components/GlobalBackground';
+import { useSEO } from '../../hooks/useSEO';
 
 export default function LandingScreen({ onMasterPress, onMeetAllMasters }: { onMasterPress: () => void, onMeetAllMasters: () => void }) {
+    useSEO();
     return (
         <GlobalBackground>
             <Header onBrowsePress={onMeetAllMasters} onLogoPress={() => { }} />

@@ -34,11 +34,11 @@ export const HeroSection = ({ onStartPractice }: { onStartPractice?: () => void 
     ];
 
     return (
-        <View className="bg-white overflow-hidden pb-12">
-            <View className="max-w-[1440px] mx-auto px-6 pt-12 lg:pt-20">
-                <View className="flex-col lg:flex-row items-center gap-12">
+        <View className="bg-white px-6 py-12 lg:py-16">
+            <View className="max-w-[1440px] mx-auto">
+                <View className="flex-col lg:flex-row items-center lg:items-start" style={{ gap: 48 }}>
                     {/* Left Content */}
-                    <View className="w-full lg:w-1/2 flex-col justify-center">
+                    <View className="w-full lg:w-[52%] flex-col justify-center">
                         <View className="mb-6">
                             <Text className="text-[10px] md:text-xs font-roboto-bold text-[#EB0046] uppercase tracking-[6px] mb-4">
                                 The Agape Sanctuary
@@ -50,11 +50,11 @@ export const HeroSection = ({ onStartPractice }: { onStartPractice?: () => void 
                             </Text>
                         </View>
 
-                        <Text className="text-base md:text-lg text-gray-500 font-roboto-regular leading-relaxed max-w-lg mb-8">
+                        <Text className="text-base md:text-lg text-gray-500 font-roboto-regular leading-relaxed mb-8 pr-8">
                             A 24/7 live sanctuary. Shape your inner state and refine your focus through guided presence and ancient wisdom.
                         </Text>
 
-                        <View className="mb-10 w-full max-w-md">
+                        <View className="mb-10 w-full">
                             <Text className="text-[10px] font-roboto-bold text-gray-400 uppercase tracking-[4px] mb-4">Choose your intention</Text>
                             <View>
                                 <IntentionItem label="Build calm focus and clarity" />
@@ -78,29 +78,32 @@ export const HeroSection = ({ onStartPractice }: { onStartPractice?: () => void 
                     </View>
 
                     {/* Right Visuals - Sophisticated Grid */}
-                    <View className="w-full lg:w-1/2 h-[500px] lg:h-[600px] relative">
-                        <View className="flex-row h-full gap-4">
-                            <View className="flex-1 space-y-4 pt-8">
-                                <View className="flex-[0.6] rounded-[32px] overflow-hidden shadow-sm">
-                                    <Image source={{ uri: collageImages[0] }} className="w-full h-full" resizeMode="cover" />
+                    <View className="w-full lg:w-[48%] relative" style={{ minHeight: 600 }}>
+                        <View style={{ flexDirection: 'row', height: 600, gap: 16 }}>
+                            {/* Left Column */}
+                            <View style={{ flex: 1, gap: 16, paddingTop: 32 }}>
+                                <View style={{ height: 360, borderRadius: 32, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 8 }}>
+                                    <Image source={{ uri: collageImages[0] }} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
                                 </View>
-                                <View className="flex-[0.4] rounded-[32px] overflow-hidden shadow-sm">
-                                    <Image source={{ uri: collageImages[1] }} className="w-full h-full" resizeMode="cover" />
+                                <View style={{ height: 200, borderRadius: 32, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 8 }}>
+                                    <Image source={{ uri: collageImages[1] }} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
                                 </View>
                             </View>
-                            <View className="flex-1 space-y-4">
-                                <View className="flex-[0.4] rounded-[32px] overflow-hidden shadow-sm">
-                                    <Image source={{ uri: collageImages[2] }} className="w-full h-full" resizeMode="cover" />
+
+                            {/* Right Column */}
+                            <View style={{ flex: 1, gap: 16 }}>
+                                <View style={{ height: 200, borderRadius: 32, overflow: 'hidden', backgroundColor: '#f5f5f5', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 8 }}>
+                                    <Image source={{ uri: collageImages[2] }} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
                                 </View>
-                                <View className="flex-[0.6] rounded-[32px] overflow-hidden shadow-sm">
-                                    <Image source={{ uri: collageImages[3] }} className="w-full h-full" resizeMode="cover" />
+                                <View style={{ height: 360, borderRadius: 32, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 8 }}>
+                                    <Image source={{ uri: collageImages[3] }} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
                                 </View>
                             </View>
                         </View>
 
                         {/* Decorative background element */}
-                        <View className="absolute -z-10 -right-10 top-20 w-80 h-80 bg-[#EB0046]/10 rounded-full blur-[80px]" />
-                        <View className="absolute -z-10 -left-10 bottom-0 w-60 h-60 bg-blue-100/20 rounded-full blur-[60px]" />
+                        <View style={{ position: 'absolute', right: -40, top: 80, width: 320, height: 320, backgroundColor: 'rgba(235, 0, 70, 0.1)', borderRadius: 160, zIndex: -1 }} />
+                        <View style={{ position: 'absolute', left: -40, bottom: 0, width: 240, height: 240, backgroundColor: 'rgba(219, 234, 254, 0.2)', borderRadius: 120, zIndex: -1 }} />
                     </View>
                 </View>
             </View>

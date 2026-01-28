@@ -5,7 +5,7 @@ import { Search, ChevronDown, Menu } from 'lucide-react-native';
 export const Header = ({ onLogoPress, onBrowsePress }: { onLogoPress?: () => void, onBrowsePress?: () => void }) => {
     return (
         <View className="w-full bg-white border-b border-gray-100 z-50">
-            <View className="max-w-[1400px] mx-auto px-6 h-20 flex-row items-center justify-between">
+            <View className="max-w-[1440px] mx-auto px-6 h-20 flex-row items-center justify-between">
                 {/* Left Section: Logo & Browse */}
                 <View className="flex-row items-center space-x-8">
                     <TouchableOpacity className="flex-row items-center" onPress={onLogoPress}>

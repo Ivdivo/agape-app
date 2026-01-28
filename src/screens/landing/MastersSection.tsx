@@ -18,9 +18,9 @@ const MasterPreview = ({ name, role, image, onPress }: any) => (
 
 export const MastersSection = ({ onMasterPress, onMeetAllMasters }: any) => {
     return (
-        <View className="py-24 bg-[#fafafa]">
-            <View className="max-w-[1440px] mx-auto px-6">
-                <View className="flex-row justify-between items-end mb-16">
+        <View className="py-12 bg-[#fafafa] px-6">
+            <View className="max-w-[1440px] mx-auto">
+                <View className="flex-row justify-between items-end mb-10">
                     <View className="max-w-2xl">
                         <Text className="text-[10px] font-roboto-bold text-[#EB0046] uppercase tracking-[6px] mb-6">The Collective</Text>
                         <Text className="text-4xl md:text-6xl font-roboto-black text-black uppercase tracking-tighter leading-none">

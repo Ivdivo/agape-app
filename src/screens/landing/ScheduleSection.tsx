@@ -11,8 +11,8 @@ const ScheduleCard = ({ time, title, instructor }: any) => (
 
 export const ScheduleSection = () => {
     return (
-        <View className="py-20 bg-white">
-            <View className="max-w-[1440px] mx-auto px-6">
+        <View className="py-12 bg-white px-6">
+            <View className="max-w-[1440px] mx-auto">
                 <View className="flex-row justify-between items-end mb-12">
                     <View>
                         <Text className="text-[10px] font-roboto-bold text-[#EB0046] uppercase tracking-[6px] mb-4">Daily Schedule</Text>

@@ -1,11 +1,12 @@
 {
   "expo": {
-    "name": "agape-app",
-    "slug": "agape-app",
+    "name": "AGAPĒ - Meditation Sanctuary",
+    "slug": "agape",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "description": "24/7 live meditation sanctuary. Shape your inner state through guided presence and ancient wisdom.",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",

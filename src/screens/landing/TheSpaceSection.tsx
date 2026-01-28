@@ -16,9 +16,9 @@ const FeatureItem = ({ icon: Icon, title, description }: any) => (
 
 export const TheSpaceSection = () => {
     return (
-        <View className="bg-white px-6 py-24 lg:py-32">
+        <View className="bg-white px-6 py-12 lg:py-16">
             <View className="max-w-[1440px] mx-auto">
-                <View className="mb-20 px-4 items-center">
+                <View className="mb-12 px-4 items-center">
                     <Text className="text-[10px] md:text-xs font-roboto-bold text-[#EB0046] uppercase tracking-[6px] mb-6">Innovative Practice</Text>
                     <Text className="text-[32px] sm:text-[44px] md:text-[56px] lg:text-[72px] font-roboto-black text-black uppercase tracking-tighter text-center leading-[0.95]">
                         Unmatched Life{"\n"}Immersion.

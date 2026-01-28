@@ -4,8 +4,8 @@ import { Play } from 'lucide-react-native';
 
 export const VideoSection = () => {
     return (
-        <View className="py-16 md:py-24 bg-black">
-            <View className="max-w-[1440px] mx-auto px-6">
+        <View className="py-12 md:py-16 bg-black px-6">
+            <View className="max-w-[1440px] mx-auto">
                 <View className="flex-row flex-wrap lg:flex-nowrap items-center">
                     <View className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-16">
                         <Text className="text-[#EB0046] font-roboto-bold text-[10px] uppercase tracking-[6px] mb-6">Featured Content</Text>
