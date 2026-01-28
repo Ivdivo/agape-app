@@ -8,7 +8,7 @@ const IntentionItem = ({ label }: { label: string }) => {
         <TouchableOpacity
             onPress={() => setChecked(!checked)}
             activeOpacity={0.7}
-            className={`flex-row items-center p-4 mb-3 rounded-2xl border transition-all duration-300 ${checked
+            className={`flex-row items-center p-3 mb-2 rounded-xl border transition-all duration-300 ${checked
                 ? 'bg-[#EB0046]/5 border-[#EB0046] shadow-sm'
                 : 'bg-gray-50/50 border-gray-100'
                 }`}
@@ -17,7 +17,7 @@ const IntentionItem = ({ label }: { label: string }) => {
                 }`}>
                 {checked && <Check size={12} color="white" strokeWidth={4} />}
             </View>
-            <Text className={`ml-4 text-sm md:text-base font-roboto-medium tracking-tight ${checked ? 'text-black' : 'text-gray-600'
+            <Text className={`ml-3 text-sm font-roboto-medium tracking-tight ${checked ? 'text-black' : 'text-gray-600'
                 }`}>
                 {label}
             </Text>
@@ -34,75 +34,77 @@ export const HeroSection = ({ onStartPractice }: { onStartPractice?: () => void 
     ];
 
     return (
-        <View className="bg-white overflow-hidden">
-            <View className="max-w-[1440px] mx-auto px-6 py-12 lg:py-24">
-                <View className="flex-row flex-wrap lg:flex-nowrap items-center">
+        <View className="bg-white overflow-hidden pb-12">
+            <View className="max-w-[1440px] mx-auto px-6 pt-12 lg:pt-20">
+                <View className="flex-col lg:flex-row items-center gap-12">
                     {/* Left Content */}
-                    <View className="w-full lg:w-[55%] mb-12 lg:mb-0 lg:pr-10 xl:pr-20">
-                        <View className="mb-8">
-                            <Text className="text-[10px] font-roboto-bold text-[#EB0046] uppercase tracking-[8px] mb-8">
+                    <View className="w-full lg:w-1/2 flex-col justify-center">
+                        <View className="mb-6">
+                            <Text className="text-[10px] md:text-xs font-roboto-bold text-[#EB0046] uppercase tracking-[6px] mb-4">
                                 The Agape Sanctuary
                             </Text>
-                            <Text className="text-[38px] sm:text-[56px] md:text-[72px] lg:text-[84px] xl:text-[96px] font-roboto-black tracking-tighter text-black leading-[0.95] uppercase">
+                            {/* Adjusted text size for better responsiveness */}
+                            <Text className="text-[42px] sm:text-[56px] lg:text-[72px] font-roboto-black tracking-tighter text-black leading-[0.95] uppercase">
                                 Love is the{"\n"}force that{"\n"}
                                 <Text className="text-[#EB0046]">unites.</Text>
                             </Text>
                         </View>
 
-                        <Text className="text-lg md:text-xl text-gray-500 font-roboto-regular leading-relaxed max-w-xl mb-12">
+                        <Text className="text-base md:text-lg text-gray-500 font-roboto-regular leading-relaxed max-w-lg mb-8">
                             A 24/7 live sanctuary. Shape your inner state and refine your focus through guided presence and ancient wisdom.
                         </Text>
 
-                        <View className="mb-14">
-                            <Text className="text-[10px] font-roboto-bold text-gray-400 uppercase tracking-[4px] mb-8">Choose your intention</Text>
-                            <View className="max-w-md">
+                        <View className="mb-10 w-full max-w-md">
+                            <Text className="text-[10px] font-roboto-bold text-gray-400 uppercase tracking-[4px] mb-4">Choose your intention</Text>
+                            <View>
                                 <IntentionItem label="Build calm focus and clarity" />
                                 <IntentionItem label="Morning alignment and intention" />
                                 <IntentionItem label="Deep spiritual immersion" />
                             </View>
                         </View>
 
-                        <View className="flex-row items-center space-x-6">
+                        <View className="flex-row items-center space-x-4">
                             <TouchableOpacity
                                 onPress={onStartPractice}
-                                className="bg-black px-8 md:px-10 py-5 rounded-2xl shadow-2xl flex-row items-center"
+                                className="bg-black px-8 py-4 rounded-xl shadow-lg flex-row items-center hover:bg-gray-900 transition-colors"
                             >
                                 <Text className="text-white font-roboto-bold text-[11px] uppercase tracking-widest mr-3">Start Practice</Text>
                                 <ArrowRight size={16} color="white" />
                             </TouchableOpacity>
-                            <TouchableOpacity className="px-6 py-5">
-                                <Text className="text-black font-roboto-bold text-[11px] uppercase tracking-widest border-b border-black">View Schedule</Text>
+                            <TouchableOpacity className="px-6 py-4">
+                                <Text className="text-black font-roboto-bold text-[11px] uppercase tracking-widest border-b border-gray-300 pb-1">View Schedule</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
 
                     {/* Right Visuals - Sophisticated Grid */}
-                    <View className="w-full lg:w-[45%] h-full">
-                        <View className="flex-row gap-4 mb-4">
-                            <View className="flex-1 space-y-4 pt-12">
-                                <View className="aspect-[3/4] rounded-[40px] overflow-hidden bg-gray-50 shadow-lg border border-gray-100">
+                    <View className="w-full lg:w-1/2 h-[500px] lg:h-[600px] relative">
+                        <View className="flex-row h-full gap-4">
+                            <View className="flex-1 space-y-4 pt-8">
+                                <View className="flex-[0.6] rounded-[32px] overflow-hidden shadow-sm">
                                     <Image source={{ uri: collageImages[0] }} className="w-full h-full" resizeMode="cover" />
                                 </View>
-                                <View className="aspect-square rounded-[40px] overflow-hidden bg-gray-50 shadow-lg border border-gray-100">
+                                <View className="flex-[0.4] rounded-[32px] overflow-hidden shadow-sm">
                                     <Image source={{ uri: collageImages[1] }} className="w-full h-full" resizeMode="cover" />
                                 </View>
                             </View>
                             <View className="flex-1 space-y-4">
-                                <View className="aspect-square rounded-[40px] overflow-hidden bg-gray-50 shadow-lg border border-gray-100">
+                                <View className="flex-[0.4] rounded-[32px] overflow-hidden shadow-sm">
                                     <Image source={{ uri: collageImages[2] }} className="w-full h-full" resizeMode="cover" />
                                 </View>
-                                <View className="aspect-[3/4] rounded-[40px] overflow-hidden bg-gray-50 shadow-lg border border-gray-100">
+                                <View className="flex-[0.6] rounded-[32px] overflow-hidden shadow-sm">
                                     <Image source={{ uri: collageImages[3] }} className="w-full h-full" resizeMode="cover" />
                                 </View>
                             </View>
                         </View>
 
                         {/* Decorative background element */}
-                        <View className="absolute -z-10 -right-20 -top-20 w-80 h-80 bg-[#EB0046]/5 rounded-full blur-[100px]" />
-                        <View className="absolute -z-10 -left-10 bottom-0 w-60 h-60 bg-blue-50/5 rounded-full blur-[80px]" />
+                        <View className="absolute -z-10 -right-10 top-20 w-80 h-80 bg-[#EB0046]/10 rounded-full blur-[80px]" />
+                        <View className="absolute -z-10 -left-10 bottom-0 w-60 h-60 bg-blue-100/20 rounded-full blur-[60px]" />
                     </View>
                 </View>
             </View>
         </View>
     );
 };
+
